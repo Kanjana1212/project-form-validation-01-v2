@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>คำร้องขอโอนนักศึกษา</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #e4aa68;
+      padding: 30px;
+    }
+    .form-container {
+      max-width: 600px;
+      background-color: #fff;
+      padding: 25px;
+      border-radius: 8px;
+      margin: auto;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 10px;
+      background-color: #226bca;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #004999;
+    }
+  </style>
+</head>
+<body>
+
+<div class="form-container">
+  <h2>คำร้องขอโอนย้ายสาขาวิชาต่างคณะ</h2>
+  <form id="transferForm">
+    <label>ชื่อ - นามสกุล</label>
+    <input type="text" name="fullname" required placeholder="กรอกชื่อและนามสกุล">
+
+    <label>รหัสนักศึกษา</label>
+    <input type="text" name="student_id" required placeholder="กรอกรหัสนักศึกษา">
+
+    <label>เบอร์โทรศัพท์</label>
+    <input type="tel" name="phone" required pattern="0[0-9]{9}" placeholder="กรอกเบอร์ 10 หลัก เช่น 0812345678">
+
+    <label>คณะที่กำลังศึกษาอยู่</label>
+    <select name="old_faculty" required>
+      <option value="">-- กรุณาเลือกคณะเดิม --</option>
+      <option value="คณะบริหารธุรกิจ">คณะบริหารธุรกิจ</option>
+      <option value="คณะวิทยาศาสตร์">คณะวิทยาศาสตร์</option>
+      <option value="คณะเทคโนโลยีการประมงและทรัพยากรทางน้ำ">คณะเทคโนโลยีการประมงและทรัพยากรทางน้ำ</option>
+      <option value="คณะศิลปศาสตร์">คณะศิลปศาสตร์</option>
+      <option value="คณะสถาปัตยกรรมศาสตร์และการออกแบบสิ่งแวดล้อม">คณะสถาปัตยกรรมศาสตร์และการออกแบบสิ่งแวดล้อม</option>
+      <option value="คณะสารสนเทศและการสื่อสาร">คณะสารสนเทศและการสื่อสาร</option>
+      <option value="คณะผลิตกรรมการเกษตร">คณะผลิตกรรมการเกษตร</option>
+      <option value="คณะวิศวกรรมและอุตสาหกรรมเกษตร">คณะวิศวกรรมและอุตสาหกรรมเกษตร</option>
+      <option value="คณะพัฒนาการท่องเที่ยว">คณะพัฒนาการท่องเที่ยว</option>
+      <option value="คณะเศรษฐศาสตร์">คณะเศรษฐศาสตร์</option>
+      <option value="คณะสัตวศาสตร์และเทคโนโลยี">คณะสัตวศาสตร์และเทคโนโลยี</option>
+    </select>
+
+    <label>คณะที่ประสงค์จะโอนย้ายไปศึกษา</label>
+    <select name="new_faculty" required>
+      <option value="">-- กรุณาเลือกคณะที่ต้องการโอน --</option>
+      <option value="คณะบริหารธุรกิจ">คณะบริหารธุรกิจ</option>
+      <option value="คณะวิทยาศาสตร์">คณะวิทยาศาสตร์</option>
+      <option value="คณะเทคโนโลยีการประมงและทรัพยากรทางน้ำ">คณะเทคโนโลยีการประมงและทรัพยากรทางน้ำ</option>
+      <option value="คณะศิลปศาสตร์">คณะศิลปศาสตร์</option>
+      <option value="คณะสถาปัตยกรรมศาสตร์และการออกแบบสิ่งแวดล้อม">คณะสถาปัตยกรรมศาสตร์และการออกแบบสิ่งแวดล้อม</option>
+      <option value="คณะสารสนเทศและการสื่อสาร">คณะสารสนเทศและการสื่อสาร</option>
+      <option value="คณะผลิตกรรมการเกษตร">คณะผลิตกรรมการเกษตร</option>
+      <option value="คณะวิศวกรรมและอุตสาหกรรมเกษตร">คณะวิศวกรรมและอุตสาหกรรมเกษตร</option>
+      <option value="คณะพัฒนาการท่องเที่ยว">คณะพัฒนาการท่องเที่ยว</option>
+      <option value="คณะเศรษฐศาสตร์">คณะเศรษฐศาสตร์</option>
+      <option value="คณะสัตวศาสตร์และเทคโนโลยี">คณะสัตวศาสตร์และเทคโนโลยี</option>
+    </select>
+
+    <label>เหตุผลที่ประสงค์จะโอนย้ายคณะ</label>
+    <textarea name="reason" rows="4" required placeholder="อธิบายเหตุผลในการขอโอน"></textarea>
+
+    <button type="submit">ส่งคำร้อง</button>
+  </form>
+</div>
+
+<script>
+  document.getElementById("transferForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const fullname = this.fullname.value.trim();
+    const studentId = this.student_id.value.trim();
+    const phone = this.phone.value.trim();
+    const oldFaculty = this.old_faculty.value;
+    const newFaculty = this.new_faculty.value;
+    const reason = this.reason.value.trim();
+
+    // ตรวจสอบเบอร์โทรศัพท์
+    const phonePattern = /^0[0-9]{9}$/;
+    if (!phonePattern.test(phone)) {
+      alert("กรุณากรอกเบอร์โทรศัพท์ให้ถูกต้อง (10 หลักขึ้นต้นด้วย 0)");
+      return;
+    }
+
+    if (!fullname || !studentId || !oldFaculty || !newFaculty || !reason) {
+      alert("กรุณากรอกข้อมูลให้ครบทุกช่อง");
+      return;
+    }
+
+    alert("ส่งคำร้องเรียบร้อยแล้ว ✅");
+    this.reset(); // ล้างฟอร์มหลังส่ง
+  });
+</script>
+
+</body>
+</html>

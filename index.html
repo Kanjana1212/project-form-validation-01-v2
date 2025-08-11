@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>ฟอร์มจองกิจกรรม</title>
+    <style>
+        body {
+            font-family: Tahoma, sans-serif;
+            background-color: #cae5e9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: rgb(255, 255, 255);
+            padding: 20px 30px;
+            border-radius: 8px;
+            box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
+            width: 300px;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+            font-size: 14px;
+            color: #555;
+        }
+        input, select, button {
+            width: 100%;
+            padding: 6px;
+            margin-top: 4px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #2196F3;
+            color: white;
+            border: none;
+            margin-top: 15px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #1976D2;
+        }
+        .error {
+            color: red;
+            font-size: 13px;
+            margin-top: 8px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>จองตั๋วกิจกรรม</h2>
+        <form id="bookingForm">
+            <label>ชื่อ-นามสกุล:
+                <input type="text" id="fullname">
+            </label>
+            <label>เบอร์โทรศัพท์:
+                <input type="text" id="phone">
+            </label>
+            <label>ประเภทบัตร:
+                <select id="ticketType">
+                    <option value="ปกติ">ปกติ</option>
+                    <option value="VIP">VIP</option>
+                    <option value="Premium">Premium</option>
+                </select>
+            </label>
+            <label>จำนวนบัตร:
+                <input type="number" id="ticketCount">
+            </label>
+            <button type="submit">จอง</button>
+        </form>
+        <p id="message" class="error"></p>
+    </div>
+
+    <script>
+        const form = document.getElementById("bookingForm");
+        const msg = document.getElementById("message");
+
+        form.addEventListener("submit", function(e){
+            e.preventDefault();
+
+            let name = document.getElementById("fullname").value.trim();
+            let phone = document.getElementById("phone").value.trim();
+            let type = document.getElementById("ticketType").value;
+            let count = parseInt(document.getElementById("ticketCount").value);
+
+            msg.textContent = "";
+
+            if(name.split(" ").length < 2){
+                msg.textContent = "กรุณากรอกชื่อและนามสกุล";
+                return;
+            }
+
+            if(phone.length !== 10 || phone[0] !== "0" || isNaN(phone)){
+                msg.textContent = "เบอร์โทรไม่ถูกต้อง";
+                return;
+            }
+
+            if(count < 1 || count > 5 || isNaN(count)){
+                msg.textContent = "จำนวนบัตรต้องระหว่าง 1-5";
+                return;
+            }
+
+            if((type === "VIP" || type === "Premium") && count > 2){
+                msg.textContent = "VIP หรือ Premium จำกัดไม่เกิน 2 ใบ";
+                return;
+            }
+
+            alert("จองสำเร็จ จำนวน: " + count + " ประเภท: " + type);
+            form.reset();
+        });
+    </script>
+</body>
+</html>
